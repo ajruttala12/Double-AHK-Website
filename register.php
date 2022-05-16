@@ -139,17 +139,17 @@ button:hover {
     <p>Please fill in this form to create an account.</p>
     <hr>
     
-    <label for="Full-Name"><b>Full Name</b></label>
-    <input type="text" placeholder="Enter Full Name" name="Full-Name" required>
+    <label for="fullname"><b>Full Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="" required>
    
-    <label for="Email"><b>Email</b></label>
+    <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
 
-    <label for="psw-confirm"><b>Confirm Password</b></label>
-    <input type="password" placeholder="Confirm Password" name="psw-repeat" required>
+    <label for= "confirm_password"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" name="confirm_password" required>
     
     
     
