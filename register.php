@@ -1,7 +1,7 @@
 <?php
 
 require_once "config.php";
-require_once "config.php";
+require_once "session.php";
 
 if [$_SERVER["REQUEST_METHOOD"] == "POST" && isset($_POST['submit'])) {
   
@@ -45,6 +45,9 @@ if [$_SERVER["REQUEST_METHOOD"] == "POST" && isset($_POST['submit'])) {
               $insertQuery->close();
               
               mysqli_close($db)
+              
+              }
+            ?>
              
 
 <!DOCTYPE html>
