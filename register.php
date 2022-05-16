@@ -1,3 +1,52 @@
+<?php
+
+require_once "config.php";
+require_once "config.php";
+
+if [$_SERVER["REQUEST_METHOOD"] == "POST" && isset($_POST['submit'])) {
+  
+  $fullname = trim($_POST['name']);
+  $email = trim($_POST['email']);  
+  $password = trim($_POST['password']);   
+  $confirm_password = trim($_POST['confirm_password']);   
+  $password_hash = password_hash($password, PASSWORD_BCRYPT);
+  
+  if($query = $db->prepare("SELECT * FROM users WHERE email = ?")) {
+    $error = '';
+    
+    $query->bind_param('s', $email);
+    $query->execute();
+    
+    $query->store_result();
+        if ($query->num_rows > 0) {
+            $error .= '<p class="error">An account with this email address already registered!</p>';
+        } else {
+          
+          if (strlen($password ) < 6 {
+            $error .= '<p class="error">Please confirm your password</p>';
+          } else {
+              if (empty($error) && ($password != $confirm_password)) {
+                $error .= '<p class "error">The Passwords do not match</p>';
+              }
+          }
+              if (empty($error) ) {
+                $insertQuery= $db->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?);");
+                $insertQuery->bind_param("sss", $fullname, $email, $password_hash);
+                $result = $insertQuery->execute();
+                if ($result) {
+                   $error .= '<p class="success">You have successfully registered for a Double AHK Account. Have fun!</p>'
+                  } else {
+                      $error .= '<p class="error">Something went wrong!</p>';
+                }
+              }
+            }
+         }
+              $query->close();
+              $insertQuery->close();
+              
+              mysqli_close($db)
+             
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -90,17 +139,11 @@ button:hover {
     <p>Please fill in this form to create an account.</p>
     <hr>
     
-    <label for="First-Name"><b>First Name</b></label>
-    <input type="text" placeholder="Enter First Name" name="First Name" required>
-    
-    <label for="Last-Name"><b>Last Name</b></label>
-    <input type="text" placeholder="Enter Last Name" name="Last Name" required>
-    
+    <label for="Full-Name"><b>Full Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="Full-Name" required>
+   
     <label for="Email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
-    
-    <label for="Phone-Number"><b>Phone Number (Optional)</b></label>
-    <input type="text" placeholder="Enter Email" name="email">
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
