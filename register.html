@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOOD"] == "POST" && isset($_POST['submit'])) {
                 $insertQuery->bind_param("sss", $fullname, $email, $password_hash);
                 $result = $insertQuery->execute();
                 if ($result) {
-                   $error .= '<p class="success">You have successfully registered for a Double AHK Account. Have fun!</p>'
+                   $error .= '<p class="success">You have successfully registered for a Double AHK Account. Have fun!</p>';
                   } else {
                       $error .= '<p class="error">Something went wrong!</p>';
                 }
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOOD"] == "POST" && isset($_POST['submit'])) {
               $query->close();
               $insertQuery->close();
               
-              mysqli_close($db)
+              mysqli_close($db);
               
               }
             ?>
